@@ -1,0 +1,25 @@
+{
+    "name": "phpfluent/filter",
+    "type": "library",
+    "homepage": "http://github.com/PHPFluent/Filter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Henrique Moody",
+            "email": "henriquemoody@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "PHPFluent\\Filter": "src/"
+        }
+    },
+    "require": {
+        "zendframework/zend-filter": "2.*"
+    },
+    "require-dev": {
+        "phpmd/phpmd" : "~1.5",
+        "phpunit/phpunit": "~4.1",
+        "squizlabs/php_codesniffer": "~1.5"
+    }
+}

@@ -183,4 +183,16 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expectedString, $builder($actualString));
     }
+
+    public function testShouldBeAbleToPassOptionsToFilter()
+    {
+        $factory = $this->factory();
+        $factory
+            ->expects($this->once())
+            ->method('filter')
+            ->with('json_encode', array(JSON_ERROR_SYNTAX));
+
+        $builder = new Builder($factory);
+        $builder->json_encode(JSON_ERROR_SYNTAX);
+    }
 }

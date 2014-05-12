@@ -10,24 +10,43 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testShouldHaveZendFilterAsDefaultPrefix()
     {
         $factory = new Factory();
+        $prefixes = $factory->getPrefixes();
 
-        $this->assertEquals(array('Zend\\Filter\\'), $factory->getPrefixes());
+        $this->assertEquals('Zend\\Filter\\', $prefixes[0]);
+    }
+
+    public function testShouldHaveZendFilterFileAsDefaultPrefix()
+    {
+        $factory = new Factory();
+        $prefixes = $factory->getPrefixes();
+
+        $this->assertEquals('Zend\\Filter\\File\\', $prefixes[1]);
+    }
+
+    public function testShouldHaveZendFilterWordAsDefaultPrefix()
+    {
+        $factory = new Factory();
+        $prefixes = $factory->getPrefixes();
+
+        $this->assertEquals('Zend\\Filter\\Word\\', $prefixes[2]);
     }
 
     public function testShouldBeAbleToAppendANewPrefix()
     {
         $factory = new Factory();
         $factory->appendPrefix('PHPFluent\\Filter\\');
+        $prefixes = $factory->getPrefixes();
 
-        $this->assertEquals(array('Zend\\Filter\\', 'PHPFluent\\Filter\\'), $factory->getPrefixes());
+        $this->assertEquals('PHPFluent\\Filter\\', $prefixes[3]);
     }
 
     public function testShouldBeAbleToPrependANewPrefix()
     {
         $factory = new Factory();
         $factory->prependPrefix('PHPFluent\\Filter\\');
+        $prefixes = $factory->getPrefixes();
 
-        $this->assertEquals(array('PHPFluent\\Filter\\', 'Zend\\Filter\\'), $factory->getPrefixes());
+        $this->assertEquals('PHPFluent\\Filter\\', $prefixes[0]);
     }
 
     public function testShouldCreateAZendFilterByName()

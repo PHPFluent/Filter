@@ -11,7 +11,11 @@ use UnexpectedValueException;
  */
 class Factory
 {
-    protected $prefixes = array('Zend\\Filter\\');
+    protected $prefixes = array(
+        'Zend\\Filter\\',
+        'Zend\\Filter\\File\\',
+        'Zend\\Filter\\Word\\',
+    );
 
     public function getPrefixes()
     {

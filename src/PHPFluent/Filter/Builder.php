@@ -2,8 +2,9 @@
 
 namespace PHPFluent\Filter;
 
-use Zend\Filter\FilterInterface;
-
+/**
+ * A filter builder
+ */
 class Builder
 {
 

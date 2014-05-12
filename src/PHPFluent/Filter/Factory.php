@@ -6,6 +6,9 @@ use InvalidArgumentException;
 use ReflectionClass;
 use UnexpectedValueException;
 
+/**
+ * A filter factory
+ */
 class Factory
 {
     protected $prefixes = array('Zend\\Filter\\');
@@ -42,7 +45,7 @@ class Factory
 
             $reflection = new ReflectionClass($className);
             if (! $reflection->isSubclassOf('Zend\Filter\FilterInterface')) {
-                throw new UnexpectedValueException(sprintf('"%s" is not a valid Zend filter', $className));
+                throw new UnexpectedValueException(sprintf('"%s" is not a valid filter', $className));
             }
 
             return $reflection->newInstanceArgs($options);

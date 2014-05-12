@@ -7,6 +7,10 @@
         {
             "name": "Henrique Moody",
             "email": "henriquemoody@gmail.com"
+        },
+        {
+            "name": "Kinn Coelho Julião",
+            "email": "kinncj@php.net"
         }
     ],
     "autoload": {

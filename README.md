@@ -84,6 +84,20 @@ f::getDefaultFactory()->appendPrefix('My\\Filter\\Prefix');
 
 So, in the example above `v::myFilter()` will call `My\Filter\PrefixMyFilter`.
 
+You can implement your own filter.
+
+```php
+use PHPFluent\Filter\FilterInterface;
+
+class UrlFilter implements FilterInterface
+{
+    public function filter($value)
+    {
+        return filter_var($value, FILTER_SANITIZE_URL);
+    }
+}
+```
+
 ### Filter factory
 
 To create the filters by its name we use our Factory; there are two ways to change the Factory to be used.

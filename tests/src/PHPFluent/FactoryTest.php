@@ -57,7 +57,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException UnexpectedValueException
-     * @expectedExceptionMessage "PHPFluent\Filter\TestNonZendFilter" is not a valid Zend filter
+     * @expectedExceptionMessage "PHPFluent\Filter\TestNonZendFilter" is not a valid filter
      */
     public function testShouldThrowsAnExceptionWhenFilterIsNotInstanceOfZendFilterInterface()
     {

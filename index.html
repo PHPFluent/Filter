@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="PHPFluent Filter : A fluent filter library for PHP based on Zend\Filter" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>PHPFluent Filter</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/PHPFluent/Filter">View on GitHub</a>
+
+          <h1 id="project_title">PHPFluent Filter</h1>
+          <h2 id="project_tagline">A fluent filter library for PHP based on Zend\Filter</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/PHPFluent/Filter/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/PHPFluent/Filter/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="phpfluentfilter" class="anchor" href="#phpfluentfilter"><span class="octicon octicon-link"></span></a>PHPFluent\Filter</h1>
+
+<p><a href="http://travis-ci.org/PHPFluent/Filter"><img src="https://secure.travis-ci.org/PHPFluent/Filter.png" alt="Build Status"></a>
+<a href="https://packagist.org/packages/phpfluent/filter"><img src="https://poser.pugx.org/phpfluent/filter/downloads.png" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/phpfluent/filter"><img src="https://poser.pugx.org/phpfluent/filter/license.png" alt="License"></a>
+<a href="https://packagist.org/packages/phpfluent/filter"><img src="https://poser.pugx.org/phpfluent/filter/v/stable.png" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/phpfluent/filter"><img src="https://poser.pugx.org/phpfluent/filter/v/unstable.png" alt="Latest Unstable Version"></a></p>
+
+<p>Provider a better API to handle Zend filters.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Package is available on <a href="https://packagist.org/packages/phpfluent/filter">Packagist</a>, you can install it
+using <a href="http://getcomposer.org">Composer</a>.</p>
+
+<div class="highlight highlight-bash"><pre>composer require phpfluent/filter
+</pre></div>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>The static API was inspired on <a href="https://github.com/Respect/Validation">Respect\Validation</a>.</p>
+
+<h3>
+<a name="namespace-import" class="anchor" href="#namespace-import"><span class="octicon octicon-link"></span></a>Namespace Import</h3>
+
+<p><em>PHPFluent\Filter</em> is namespaced, but you can make your life easier by importing a single class into your context:</p>
+
+<div class="highlight highlight-php"><pre><span class="k">use</span> <span class="nx">PHPFluent\Filter\Builder</span> <span class="k">as</span> <span class="nx">f</span><span class="p">;</span>
+</pre></div>
+
+<h3>
+<a name="calling-a-filter" class="anchor" href="#calling-a-filter"><span class="octicon octicon-link"></span></a>Calling a filter</h3>
+
+<div class="highlight highlight-php"><pre><span class="nx">f</span><span class="o">::</span><span class="na">stringToUpper</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">'phpfluent'</span><span class="p">);</span> <span class="c1">// returns: 'PHPFLUENT'</span>
+</pre></div>
+
+<h3>
+<a name="calling-multiple-filters" class="anchor" href="#calling-multiple-filters"><span class="octicon octicon-link"></span></a>Calling multiple filters</h3>
+
+<div class="highlight highlight-php"><pre><span class="nx">f</span><span class="o">::</span><span class="na">stringToUpper</span><span class="p">()</span>
+ <span class="o">-&gt;</span><span class="na">stringTrim</span><span class="p">()</span>
+ <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">'filter    '</span><span class="p">);</span> <span class="c1">// returns 'PHPFLUENT'</span>
+</pre></div>
+
+<h3>
+<a name="calling-native-php-functions" class="anchor" href="#calling-native-php-functions"><span class="octicon octicon-link"></span></a>Calling native PHP functions</h3>
+
+<div class="highlight highlight-php"><pre><span class="nx">f</span><span class="o">::</span><span class="na">json_encode</span><span class="p">(</span><span class="nx">JSON_PRETTY_PRINT</span><span class="p">)</span>
+ <span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'value'</span><span class="p">));</span> <span class="c1">// returns: '{"key": "value"}'</span>
+</pre></div>
+
+<h3>
+<a name="non-static-api" class="anchor" href="#non-static-api"><span class="octicon octicon-link"></span></a>Non-static API</h3>
+
+<p>You also can simply create an instance of <code>PHPFluent\Filter\Builder</code>.</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PHPFluent\Filter\Builder</span><span class="p">();</span>
+<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">ucfirst</span><span class="p">();</span>
+<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">str_pad</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">);</span>
+<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">'filter'</span><span class="p">);</span> <span class="c1">// returns: 'Filter----'</span>
+</pre></div>
+
+<h3>
+<a name="calling-builder-class" class="anchor" href="#calling-builder-class"><span class="octicon octicon-link"></span></a>Calling Builder class</h3>
+
+<p><code>PHPFluent\Filter\Builder</code> implements <code>__invoke()</code> method, so you can do like:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$builder</span><span class="p">(</span><span class="s1">'filter'</span><span class="p">);</span> <span class="c1">// returns: 'Filter----'</span>
+</pre></div>
+
+<h3>
+<a name="custom-filters" class="anchor" href="#custom-filters"><span class="octicon octicon-link"></span></a>Custom filters</h3>
+
+<p>You can use your own Zend filters.</p>
+
+<div class="highlight highlight-php"><pre><span class="nx">f</span><span class="o">::</span><span class="na">myFilter</span><span class="p">();</span>
+</pre></div>
+
+<p>For that purpose we provide a way to add your own namespaces/prefixes:</p>
+
+<div class="highlight highlight-php"><pre><span class="nx">f</span><span class="o">::</span><span class="na">getDefaultFactory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">appendPrefix</span><span class="p">(</span><span class="s1">'My\\Filter\\Prefix'</span><span class="p">);</span>
+</pre></div>
+
+<p>So, in the example above <code>v::myFilter()</code> will call <code>My\Filter\PrefixMyFilter</code>.</p>
+
+<p>You can implement your own filter.</p>
+
+<div class="highlight highlight-php"><pre><span class="k">use</span> <span class="nx">PHPFluent\Filter\FilterInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UrlFilter</span> <span class="k">implements</span> <span class="nx">FilterInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">filter_var</span><span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_URL</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="filter-factory" class="anchor" href="#filter-factory"><span class="octicon octicon-link"></span></a>Filter factory</h3>
+
+<p>To create the filters by its name we use our Factory; there are two ways to change the Factory to be used.</p>
+
+<h4>
+<a name="static-calls" class="anchor" href="#static-calls"><span class="octicon octicon-link"></span></a>Static calls</h4>
+
+<div class="highlight highlight-php"><pre><span class="nv">$factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PHPFluent\Filter\Factory</span><span class="p">();</span>
+<span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">prependPrefix</span><span class="p">(</span><span class="s1">'My\\Zend\\Filters\\'</span><span class="p">);</span>
+
+<span class="nx">PHPFluent\Filter\Builder</span><span class="o">::</span><span class="na">setDefaultFactory</span><span class="p">(</span><span class="nv">$factory</span><span class="p">);</span>
+</pre></div>
+
+<p>In the example above the defined factory will be used for all static calls.</p>
+
+<h4>
+<a name="non-static-calls" class="anchor" href="#non-static-calls"><span class="octicon octicon-link"></span></a>Non-static calls</h4>
+
+<div class="highlight highlight-php"><pre><span class="nv">$factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PHPFluent\Filter\Factory</span><span class="p">();</span>
+<span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">prependPrefix</span><span class="p">(</span><span class="s1">'My\\Zend\\Filters\\'</span><span class="p">);</span>
+
+<span class="nv">$builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PHPFluent\Filter\Builder</span><span class="p">(</span><span class="nv">$factory</span><span class="p">);</span>
+</pre></div>
+
+<p>In the example above the defined factory will be used only for the <code>$builder</code> instance variable.</p>
+
+<p>As you could note, the factory instance if optional, so, when you did defined a factory for the builder object it will
+use the default one, defined on <code>getDefaultFactory()</code>.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">PHPFluent Filter maintained by <a href="https://github.com/PHPFluent">PHPFluent</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

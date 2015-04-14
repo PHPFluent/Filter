@@ -15,6 +15,7 @@ class Factory
         'Zend\\Filter\\',
         'Zend\\Filter\\File\\',
         'Zend\\Filter\\Word\\',
+        'PHPFluent\\Filter\\',
     );
 
     public function getPrefixes()

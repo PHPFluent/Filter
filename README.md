@@ -126,3 +126,18 @@ In the example above the defined factory will be used only for the `$builder` in
 
 As you could note, the factory instance if optional, so, when you did defined a factory for the builder object it will
 use the default one, defined on `getDefaultFactory()`.
+
+### PHPFluent filters
+
+#### key()
+
+Allows to perform filters over an array key.
+
+
+```php
+f::key('foo', f::boolean())
+    ->filter(array('foo' => 1, 'baz' => 'Whatever')); // array('foo' => true)
+```
+
+If you're looking for something more specific you should take a look on
+[Zend\InputFilter](http://framework.zend.com/manual/current/en/modules/zend.input-filter.intro.html).

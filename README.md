@@ -39,7 +39,7 @@ f::stringToUpper()->filter('phpfluent'); // returns: 'PHPFLUENT'
 ```php
 f::stringToUpper()
  ->stringTrim()
- ->filter('filter    '); // returns 'PHPFLUENT'
+ ->filter('filter    '); // returns 'FILTER'
 ```
 
 ### Calling native PHP functions
